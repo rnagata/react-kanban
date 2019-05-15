@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bookshelf": "^0.14.2",
+    "express": "^4.16.4",
     "knex": "^0.13.0",
     "pg": "^7.11.0",
     "react": "^16.8.6",
