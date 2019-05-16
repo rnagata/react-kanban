@@ -1,12 +1,22 @@
+'use strict';
+
 const express = require('express');
-const app = express();
+const bodyParser = require('body-parser');
+const Card = require('./database/models/Card');
 
 const port = process.env.EXPRESS_CONTAINER_PORT;
 
-console.log(port);
+const app = express();
+app.use(bodyParser.json());
 
 app.get('/', function(req, res){
-  res.send('hello world');
+  return new Card()
+  .fetchAll({withRelated: ['priority', 'status', 'createdBy', 'assignedTo']})
+  .then((data) => {
+    console.log(data);
+    res.send('blah');
+  });
+
 });
 
 app.listen(port);
