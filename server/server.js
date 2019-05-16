@@ -11,13 +11,17 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.get('/', function(req, res){
-  return new Card()
-  .fetchAll({withRelated: ['priority', 'status', 'createdBy', 'assignedTo']})
-  .then((data) => {
-    return res.json(data);
-  });
-});
+// Might not need
+// app.get('/', function(req, res){
+//   console.log('root get');
+//   return new Card()
+//   .fetchAll({withRelated: ['priority', 'status', 'createdBy', 'assignedTo']})
+//   .then((data) => {
+//     return res.json(data);
+//   });
+// });
 
 app.use('/cards', cards);
-app.listen(port);
+app.listen(port, () => {
+  console.log('Server listening on port ', port);
+});

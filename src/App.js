@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import KanbanBoard from './containers/KanbanBoard';
-//import Column from './components/Column';
+import {connect} from "react-redux";
+import {loadCards} from "./actions";
 
 class App extends React.Component {
   constructor(props) {
@@ -21,14 +22,15 @@ class App extends React.Component {
         }
       ]
     }
-
     // this.handleInputChange = this.handleInputChange.bind(this);
   }
-
   // handleInputChange(e) {
   //   const { value } = e.target;
   //   this.setState({ input: value });
   // }
+  componentDidMount(){
+    this.props.loadCards();
+  }
 
   render() {
     // const input = this.state.input;
@@ -44,5 +46,18 @@ class App extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loadCards: () => {
+      return dispatch(loadCards());
+    }
+  };
+};
+
+App = connect(
+  null, // mapStateToProps,
+  mapDispatchToProps
+)(App);
 
 export default App;
