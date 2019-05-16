@@ -1,6 +1,7 @@
 // Update with your config settings.
-require('dotenv').config();
-const path = require('path');
+//require('dotenv').config();
+//const path = require('path');
+require('dotenv').config({ path: '../.env' });
 
 module.exports = {
   client: 'pg',
@@ -17,9 +18,11 @@ module.exports = {
   },
   migrations: {
     tableName: 'knex_migrations',
-    directory: path.join(__dirname, 'database', 'migrations')
+    directory: './database/migrations'
+    //directory: path.join(__dirname, 'database', 'migrations')
   },
   seeds: {
-    directory: path.join(__dirname, 'database', 'seeds')
+    directory: './database/seeds'
+    //directory: path.join(__dirname, 'database', 'seeds')
   }
 };

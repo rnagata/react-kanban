@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-const port = 8080//process.env.EXPRESS_CONTAINER_PORT;
+const port = process.env.EXPRESS_CONTAINER_PORT;
 
 console.log(port);
 

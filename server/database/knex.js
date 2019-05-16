@@ -1,6 +1,6 @@
 
 
-const config = require('../../knexfile');
+const config = require('../knexfile');
 
 /**
  * require('knex') returns a function, config is a parameter for that
