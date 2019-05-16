@@ -19,12 +19,12 @@ class Card extends bookshelf.Model{
 
   // one to one
   createdBy(){
-    return this.belongsTo('User');
+    return this.hasOne('User', 'id', 'created_by')
   }
 
   // one to many
   assignedTo(){
-    return this.belongsTo('User');
+    return this.hasOne('User', 'id', 'assigned_to');
   }
 }
 

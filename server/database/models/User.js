@@ -5,11 +5,11 @@ class User extends bookshelf.Model{
   get hasTimestamps() { return true; }
 
   created() {
-    return this.hasMany('Card');
+    return this.hasMany('Card', 'cards');
   }
 
   assignedTo() {
-    return this.hasMany('Card');
+    return this.hasMany('Card', 'cards');
   }
 }
 

@@ -4,7 +4,7 @@ services:
     image: ${DOCKERHUB_NAME}/${IMAGE_NAME}:${IMAGE_VERSION}
     depends_on:
       - postgres-primary-db
-    command: ["node", "./server/server.js"]
+    command: ["npx", "nodemon", "./server/server.js"]
     container_name: ${IMAGE_NAME}
     volumes:
       - ".:/src/app"
