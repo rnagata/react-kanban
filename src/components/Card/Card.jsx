@@ -4,8 +4,8 @@ const Card = (props) => {
   const { 
     id, title, body, 
     priority, status, createdBy, 
-    assignedTo
-  } = props;
+    assignedTo,
+  } = props; // creates variables from keys in the props object
 
   return (
     <div className="card">

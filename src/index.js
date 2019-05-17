@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import bookReducer from "./reducers";
+import cardReducer from "./reducers";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
@@ -17,10 +17,10 @@ const composeEnhancers =
       })
     : compose
 
-const reducer = combineReducers({ bookReducer });
-const store = createStore(bookReducer, applyMiddleware(thunk));
+const reducer = combineReducers({ cardReducer });
+const store = createStore(reducer, applyMiddleware(thunk));
 
-console.log(store.getState());
+// console.log('store state', store.getState());
 
 ReactDOM.render(
   <Provider store={store}>

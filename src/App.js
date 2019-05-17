@@ -1,27 +1,14 @@
 import React from 'react';
 import './App.css';
-import KanbanBoard from './containers/KanbanBoard';
+// import KanbanBoard from './containers/KanbanBoard';
+// import Card from './components/Card';
+import Column from './components/Column';
 import {connect} from "react-redux";
 import {loadCards} from "./actions";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      title: 'Kanban Board',
-      columns: [
-        {
-          title: 'Queue'
-        },
-        {
-          title: 'In Progress'
-        },
-        {
-          title: 'Done'
-        }
-      ]
-    }
     // this.handleInputChange = this.handleInputChange.bind(this);
   }
   // handleInputChange(e) {
@@ -33,14 +20,13 @@ class App extends React.Component {
   }
 
   render() {
-    // const input = this.state.input;
     return (
       <div className="App">
         <header className="App-header">
-          <h1>{this.state.title}</h1>
+          <h1>Kanban Board</h1>
         </header>
         <div>
-          <KanbanBoard columns={this.state.columns} />
+          <Column cards={this.props.cards} />
         </div>
       </div>
     );
@@ -55,8 +41,16 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+// state parameter refers to the entire Redux store state.
+const mapStateToProps = state => {
+  console.log('mapStateToProps', state.cardReducer.cards);
+  return {
+    cards: state.cardReducer.cards
+  }
+}
+
 App = connect(
-  null, // mapStateToProps,
+  mapStateToProps,
   mapDispatchToProps
 )(App);
 

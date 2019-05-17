@@ -11,6 +11,9 @@ router.route('/')
     .fetchAll({withRelated: ['priority', 'status', 'createdBy', 'assignedTo']})
     .then((data) => {
       return res.json(data);
+    })
+    .catch((error) => {
+      console.log(error);
     });
   })
   .post((req, res) => {
