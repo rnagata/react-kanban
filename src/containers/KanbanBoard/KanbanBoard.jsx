@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Column from '../../components/Column';
+import Column from '../Column';
 
 class KanbanBoard extends Component {
   constructor (props) {

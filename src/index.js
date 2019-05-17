@@ -20,8 +20,6 @@ const composeEnhancers =
 const reducer = combineReducers({ cardReducer });
 const store = createStore(reducer, applyMiddleware(thunk));
 
-// console.log('store state', store.getState());
-
 ReactDOM.render(
   <Provider store={store}>
     <App />
