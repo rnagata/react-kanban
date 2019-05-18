@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Column from './containers/Column';
+import AddCard from './containers/AddCard';
 import {connect} from "react-redux";
 import {loadCards} from "./actions";
 
@@ -24,6 +25,7 @@ class App extends React.Component {
           <Column cards={this.props.cards} statusFilter='2' label='In Progress'/>
           <Column cards={this.props.cards} statusFilter='3' label='Done'/>
         </div>
+        <AddCard/>
       </div>
     );
   }
@@ -39,7 +41,7 @@ const mapDispatchToProps = dispatch => {
 
 // state parameter refers to the entire Redux store state.
 const mapStateToProps = state => {
-  console.log('mapStateToProps', state.cardReducer.cards);
+  console.log('mapStateToProps in App', state.cardReducer.cards);
   return {
     cards: state.cardReducer.cards
   }

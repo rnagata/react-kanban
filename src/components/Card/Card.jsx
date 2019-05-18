@@ -9,13 +9,11 @@ const Card = (props) => {
 
   return (
     <div className="card">
-      <div>{id}</div>
-      <div>{title}</div>
-      <div>{body}</div>
-      <div>{priority}</div>
-      <div>{status}</div>
-      <div>{createdBy}</div>
-      <div>{assignedTo}</div>
+      <h3>{title}</h3>
+      <p>{body}</p>
+      <p>{priority}</p>
+      <p>{createdBy}</p>
+      <p>{assignedTo}</p>
     </div>
   );
 }

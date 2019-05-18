@@ -7,34 +7,29 @@ class Column extends Component {
   }
 
   render(){
-    // console.log('Column', this.props.cards);
     const cardList = this.props.cards
     .filter((card) => {
-      // console.log(card);
-      // console.log('id ', card.status_id);
-      // console.log('filter ', this.props.statusFilter);
-      return card.status_id == this.props.statusFilter;
+      console.log('column render filter ', card);
+      return card.status_id.toString() === this.props.statusFilter;
     })
     .map((card) => {
-      // console.log('map ', cardList);
+      console.log(card);
       return (
         <Card
           key={card.id}
           title={card.title}
           body={card.body}
           priority={card.priority.name + ' Priority'}
-          createdBy={'Created By: ' + card.createdBy.first_name}
-          assignedTo={'Assigned To: ' + card.assignedTo.first_name}
+          createdBy={'Created By: ' + card.createdBy.first_name + " " + card.createdBy.last_name}
+          assignedTo={'Assigned To: ' + card.assignedTo.first_name + " " + card.assignedTo.last_name}
         />
       )
     })
     return (
-      <>
       <div className="column">
         <div><h1>{this.props.label}</h1></div>
-        <div className="card">{cardList}</div>
+        {cardList}
       </div>
-      </>
     );
   }
 }
