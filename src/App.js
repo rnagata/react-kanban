@@ -41,7 +41,6 @@ const mapDispatchToProps = dispatch => {
 
 // state parameter refers to the entire Redux store state.
 const mapStateToProps = state => {
-  console.log('mapStateToProps in App', state.cardReducer.cards);
   return {
     cards: state.cardReducer.cards
   }

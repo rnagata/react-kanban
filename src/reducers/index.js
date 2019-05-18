@@ -1,20 +1,24 @@
 import {LOAD_CARDS} from "../actions";
 import {ADD_CARD} from "../actions";
+import {REMOVE_CARD} from "../actions";
 
 const initialState = {
   cards: []
 };
 
 function cardReducer(state = initialState, action){
-  console.log('cardReducer function', action);
   switch(action.type){
     case LOAD_CARDS:
-      console.log('action.payload load ', action.payload);
       return Object.assign({}, {cards: [...action.payload]});
     case ADD_CARD:
-      console.log('state.cards add', state.cards);
-      console.log('action.payload add ', action.payload);
       return Object.assign({}, state, { cards: [...state.cards, action.payload]});
+    case REMOVE_CARD:
+      // get new array of cards without the deleted card
+      let updatedCardArray = state.cards.filter((card)=> {
+        return card.id !== parseInt(action.payload.id)
+      })
+      // take keys and values from right and apply to left.
+      return Object.assign({}, {cards: updatedCardArray});
     default:
       return state;
   }

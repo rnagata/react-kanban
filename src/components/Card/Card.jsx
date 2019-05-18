@@ -1,11 +1,15 @@
 import React from 'react';
 
 const Card = (props) => {
-  const { 
-    id, title, body, 
-    priority, status, createdBy, 
+  const {
+    // id,
+    title,
+    body, 
+    priority, 
+    createdBy, 
     assignedTo,
-  } = props; // creates variables from keys in the props object
+    // deleteFunction
+  } = props; 
 
   return (
     <div className="card">
@@ -14,6 +18,7 @@ const Card = (props) => {
       <p>{priority}</p>
       <p>{createdBy}</p>
       <p>{assignedTo}</p>
+      {/* <button onClick={deleteFunction}>Delete</button> */}
     </div>
   );
 }

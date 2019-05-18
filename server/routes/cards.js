@@ -60,7 +60,11 @@ router.route('/')
     new Card({id: req.body.id})
     .destroy()
     .then(() => {
-      return res.send('Deleted ', req.body.id);
+      let returnObj = {
+        id : req.body.id
+      }
+      // console.log(returnObj);
+      return res.json(returnObj);
     })
   })
   .put((req, res) => {
