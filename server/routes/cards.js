@@ -63,23 +63,28 @@ router.route('/')
       let returnObj = {
         id : req.body.id
       }
-      // console.log(returnObj);
       return res.json(returnObj);
     })
   })
   .put((req, res) => {
     console.log('put route');
+    console.log('req body ', req.body);
     new Card({id: req.body.id})
     .save({
       title: req.body.title,
       body: req.body.body,
       priority_id: req.body.priority_id, 
       status_id: req.body.status_id,
-      created_by: req.body.created_by,
       assigned_to: req.body.assigned_to,
     })
-    .then((result) => {
-      return res.send(result);
+    .then(() => {
+      new Card({id: req.body.id})
+      .fetch({withRelated: ['priority', 'status', 'createdBy', 'assignedTo']})
+      .then((result) => {
+        // result is card that was altered
+        console.log(result);
+        return res.send(result);
+      });
     });
   });
 

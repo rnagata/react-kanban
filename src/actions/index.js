@@ -2,6 +2,7 @@
 export const LOAD_CARDS = 'LOAD_CARDS';
 export const ADD_CARD = "ADD_CARD";
 export const REMOVE_CARD = "REMOVE_CARD";
+export const EDIT_CARD = "EDIT_CARD";
 
 // ACTION CREATOR - Action is returned object
 export const loadCards = () => {
@@ -44,11 +45,8 @@ export const addCard = (newCard) => {
 }
 
 export const removeCard = (param) => {
-  console.log('removeCard param ', param);
-  console.log(JSON.stringify(param));
   return (dispatch) => {
     let body = {id : param};
-    console.log('string body', body);
     return fetch(`/cards`, {
       method: 'DELETE',
       body: JSON.stringify(body),
@@ -56,16 +54,36 @@ export const removeCard = (param) => {
         'Content-Type' : 'application/json'
       }
     })
-    .then((response) => {
-      console.log('delete response ', response);
+    .then((response) => { // http response
       return response.json();
     })
     .then((body) => {
-      console.log('removeCard ', body);
       return dispatch({
         type: REMOVE_CARD,
         payload: body
       })
     })
+  }
+}
+
+export const editCard = (newValues) => {
+  return (dispatch) => {
+    return fetch('/cards', {
+      method: 'PUT',
+      body: JSON.stringify(newValues),
+      headers: {
+        'Content-Type' : 'application/json'
+      }
+    })
+    .then((response) => { // http response
+      console.log('http response ', response);
+      return response.json();
+    })
+    .then((body) => {
+      return dispatch({
+        type: EDIT_CARD,
+        payload: body
+      });
+    });
   }
 }

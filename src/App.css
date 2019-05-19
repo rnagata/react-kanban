@@ -27,6 +27,7 @@
 }
 
 .card{
+  border: 1px solid green;
   display: inline-block;
   word-break: break-word;
   padding-bottom: 20px;
@@ -39,4 +40,11 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.edit-form{
+  position: absolute;
+  background: white;
+  z-index: 1;
+  border: 1px solid black;
 }

@@ -6,15 +6,11 @@ import { removeCard } from '../../actions';
 class Column extends Component {
   constructor (props){
     super(props);
-
-    this.state = {
-
-    }
-
-    this.handleSubmit = this.handleSubmit.bind(this);
+    
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleSubmit(e){
+  handleDelete(e){
     e.preventDefault();
     this.props.removeCard(e.target.value);
   }
@@ -27,22 +23,11 @@ class Column extends Component {
     .map((card) => {
       return (
         <div>
-        <Card
-          key={card.id}
-          id = {card.id}
-          title={card.title}
-          body={card.body}
-          priority={card.priority.name + ' Priority'}
-          createdBy={'Created By: ' + card.createdBy.first_name + " " + card.createdBy.last_name}
-          assignedTo={'Assigned To: ' + card.assignedTo.first_name + " " + card.assignedTo.last_name}
-        />
+        <Card card={card} key={card.id}/>
         <form>
-          <button value={card.id} onClick={this.handleSubmit}>
+          <button value={card.id} onClick={this.handleDelete}>
             Delete Card
           </button>
-          {/* <button value={card.id} onClick={this.handleSubmit}>
-            Edit Card
-          </button> */}
         </form>
         </div>
       );
@@ -59,7 +44,6 @@ class Column extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     removeCard: (id) => {
-      // console.log('remove card id', id);
       const removeCardAction = removeCard(id);
       dispatch(removeCardAction);
     }
