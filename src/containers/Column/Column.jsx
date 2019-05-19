@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Card from '../../components/Card';
+import Card from '../Card';
 import { connect } from 'react-redux';
 import { removeCard } from '../../actions';
 
@@ -7,6 +7,10 @@ class Column extends Component {
   constructor (props){
     super(props);
     
+    this.state = {
+      columnName: ("column-" + this.props.name),
+    }
+
     this.handleDelete = this.handleDelete.bind(this);
   }
 
@@ -22,19 +26,24 @@ class Column extends Component {
     })
     .map((card) => {
       return (
-        <div>
-        <Card card={card} key={card.id}/>
-        <form>
-          <button value={card.id} onClick={this.handleDelete}>
+        <>
+        <Card key={card.id} card={card} />
+        <form key={"deleteForm_" + card.id} className="delete-form">
+          <button key={"deleteButton_" + card.id} value={card.id} onClick={this.handleDelete} >
             Delete Card
           </button>
         </form>
-        </div>
+        </>
       );
-    })
+    });
+
     return (
-      <div className="column">
-        <div><h1>{this.props.label}</h1></div>
+      <div className={this.state.columnName}>
+        <div className="header-bg">
+          <h1 className="header-text">
+            {this.props.label}
+          </h1>
+        </div>
         {cardList}
       </div>
     );

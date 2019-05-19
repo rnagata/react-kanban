@@ -8,8 +8,12 @@ import {loadCards} from "./actions";
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      header: 'Kanban Board'
+    }
   }
-  
+
   componentDidMount(){
     this.props.loadCards();
     
@@ -19,12 +23,12 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Kanban Board</h1>
+          <h1>{this.state.header}</h1>
         </header>
         <div className="board">
-          <Column cards={this.props.cards} statusFilter='1' label='Queue'/>
-          <Column cards={this.props.cards} statusFilter='2' label='In Progress'/>
-          <Column cards={this.props.cards} statusFilter='3' label='Done'/>
+          <Column cards={this.props.cards} statusFilter='1' label='Queue' name='queue'/>
+          <Column cards={this.props.cards} statusFilter='2' label='In Progress' name='in-progress'/>
+          <Column cards={this.props.cards} statusFilter='3' label='Done' name='done'/>
         </div>
         <AddCard/>
       </div>

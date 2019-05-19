@@ -8,7 +8,7 @@ import cardReducer from "./reducers";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
-import { combineReducers, createStore, compose, applyMiddleware } from "redux";
+import { combineReducers, createStore, applyMiddleware } from "redux"; // compose removed from list
 
 // const composeEnhancers =
 //   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__

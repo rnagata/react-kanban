@@ -32,15 +32,13 @@ class Card extends Component {
           {this.props.card.title} #{this.props.card.id}
         </h3>
         <p>{this.props.card.body}</p>
-        <p>{this.props.card.priority.name}</p>
+        <p>Priority: {this.props.card.priority.name}</p>
         <p>
-          {'Created By: ' +
-          this.props.card.createdBy.first_name +
+          Created By: {this.props.card.createdBy.first_name +
           this.props.card.createdBy.last_name}
         </p>
         <p>
-          {'Assigned To: ' +
-          this.props.card.assignedTo.first_name +
+          Assigned To: {this.props.card.assignedTo.first_name +
           this.props.card.assignedTo.last_name}
         </p>
         <button onClick={this.handleEdit}>Edit</button>
