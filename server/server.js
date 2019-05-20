@@ -2,8 +2,10 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const Card = require('./database/models/Card');
+const passport = require('passport');
+const localStrategy = require('passport-local');
 const cards = require('./routes/cards');
+const login = require('./routes/login');
 
 const port = process.env.EXPRESS_CONTAINER_PORT;
 
@@ -11,17 +13,8 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-// Might not need
-// app.get('/', function(req, res){
-//   console.log('root get');
-//   return new Card()
-//   .fetchAll({withRelated: ['priority', 'status', 'createdBy', 'assignedTo']})
-//   .then((data) => {
-//     return res.json(data);
-//   });
-// });
-
 app.use('/cards', cards);
+app.use('/login', login);
 app.listen(port, () => {
   console.log('Server listening on port ', port);
 });

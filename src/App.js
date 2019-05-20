@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Login from './containers/Login';
 import Column from './containers/Column';
 import AddCard from './containers/AddCard';
 import {connect} from "react-redux";
@@ -23,7 +24,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>{this.state.header}</h1>
+          <h1 className="app-title">{this.state.header}</h1>
+          <Login/>
         </header>
         <div className="board">
           <Column cards={this.props.cards} statusFilter='1' label='Queue' name='queue'/>
