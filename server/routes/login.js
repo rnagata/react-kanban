@@ -7,7 +7,8 @@ router.route('/')
   .post((req, res) => {
     console.log('/login post');
     console.log(req.body);
-    return res.send();
+    let temp = {body : req.body}; // an empty body causes an unexpected end of response.
+    return res.send(JSON.stringify(temp));
   })
 
 module.exports = router;

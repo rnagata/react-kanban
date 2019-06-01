@@ -3,6 +3,7 @@ export const LOAD_CARDS = 'LOAD_CARDS';
 export const ADD_CARD = "ADD_CARD";
 export const REMOVE_CARD = "REMOVE_CARD";
 export const EDIT_CARD = "EDIT_CARD";
+export const LOGIN = "LOGIN";
 
 // ACTION CREATOR - Action is returned object
 export const loadCards = () => {
@@ -82,6 +83,26 @@ export const editCard = (newValues) => {
     .then((body) => {
       return dispatch({
         type: EDIT_CARD,
+        payload: body
+      });
+    });
+  }
+}
+
+export const login = (credentials) => {
+  return(dispatch) => {
+    return fetch('/login', {
+      method: 'POST',
+      body: JSON.stringify(credentials),
+      headers: { 'Content-Type' : 'application/json' }
+    })
+    .then((response) => {
+      console.log('http response ', response);
+      return response.json();
+    })
+    .then((body) => {
+      return dispatch({
+        type: LOGIN,
         payload: body
       });
     });
